@@ -1,0 +1,1 @@
+# proposta-g3-entulhos
