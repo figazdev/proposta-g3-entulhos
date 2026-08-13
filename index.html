@@ -1067,6 +1067,165 @@
       .footer-actions { justify-content: stretch; display: grid; }
       .fineprint { display: grid; }
     }
+  
+    .investment-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .investment-option {
+      position: relative;
+      border-radius: 28px;
+      padding: 34px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 0% 100%, rgba(11, 74, 45, 0.38), transparent 38%),
+        radial-gradient(circle at 100% 0%, rgba(215, 164, 32, 0.18), transparent 42%),
+        linear-gradient(135deg, #09110d, #101715 60%, #151b19);
+      border: 1px solid rgba(241, 198, 91, 0.16);
+      box-shadow: 0 22px 60px rgba(0,0,0,.18);
+    }
+    .investment-option.featured {
+      border-color: rgba(241, 198, 91, 0.35);
+      box-shadow: 0 22px 70px rgba(0,0,0,.22), 0 0 0 1px rgba(241, 198, 91, 0.08) inset;
+    }
+    .option-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+      background: rgba(241,198,91,.08);
+      border: 1px solid rgba(241,198,91,.16);
+    }
+    .option-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 6px rgba(241,198,91,.08);
+    }
+    .option-title {
+      margin: 18px 0 10px;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.05;
+      color: #fff;
+      letter-spacing: -.03em;
+    }
+    .option-copy {
+      margin: 0;
+      max-width: 580px;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    .option-price {
+      margin: 24px 0 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .option-price strong {
+      color: #fff;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: .95;
+      letter-spacing: -.05em;
+      font-weight: 800;
+    }
+    .option-price span {
+      color: var(--gold-2);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+    .option-note {
+      color: rgba(255,255,255,.62);
+      font-size: 14px;
+      line-height: 1.65;
+      margin: 0 0 22px;
+    }
+    .option-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .option-list li {
+      position: relative;
+      padding-left: 18px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .option-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(18, 134, 80, 0.14);
+    }
+    .payment-inline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .payment-mini {
+      min-height: 128px;
+      padding: 18px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.09);
+      backdrop-filter: blur(8px);
+    }
+    .payment-mini small {
+      display: block;
+      color: var(--gold-2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .payment-mini strong {
+      display: block;
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: -.03em;
+    }
+    .payment-mini span {
+      display: block;
+      color: rgba(255,255,255,.62);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+  
+    @media (max-width: 1080px) {
+      .investment-options { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .payment-inline { grid-template-columns: 1fr; }
+      .investment-option { padding: 26px 22px; border-radius: 22px; }
+      .option-title { font-size: 30px; }
+      .option-price strong { font-size: 44px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1249,22 +1408,93 @@
     </section>
 
     <section class="investment" id="investimento">
-      <div class="wrap">
-        <div class="price-panel reveal">
-          <div class="price-grid">
-            <div>
-              <div class="price-label">Investimento do projeto</div>
-              <div class="price">R$ 1.850,00</div>
-              <div class="price-copy">Sistema web personalizado + implantação inicial.</div>
+      <div class="section-heading reveal">
+        <span class="eyebrow">Investimento</span>
+        <h2>Escolha o formato de contratação ideal para a G3 Entulhos</h2>
+        <p>Apresentamos duas possibilidades: aquisição definitiva do sistema ou licença de uso mensal com implantação inicial.</p>
+      </div>
+
+      <div class="investment-options reveal">
+        <article class="investment-option featured">
+          <span class="option-kicker">Compra em definitivo</span>
+          <h3 class="option-title">Sistema próprio da empresa</h3>
+          <p class="option-copy">Ideal para quem deseja contratar o desenvolvimento da solução e ficar com uma entrega sob medida para a operação da G3 Entulhos.</p>
+
+          <div class="option-price">
+            <strong>R$ 1.850,00</strong>
+            <span>pagamento do projeto</span>
+          </div>
+          <p class="option-note">Sistema web personalizado + implantação inicial.</p>
+
+          <ul class="option-list">
+            <li>Desenvolvimento personalizado conforme o fluxo operacional da G3.</li>
+            <li>Implantação, configuração inicial e apoio na entrada em operação.</li>
+            <li>Treinamento para uso no computador e no celular.</li>
+            <li>30 dias de suporte após a entrega para ajustes do escopo contratado.</li>
+          </ul>
+
+          <div class="payment-inline">
+            <div class="payment-mini">
+              <small>01</small>
+              <strong>R$ 925,00</strong>
+              <span>Entrada e início do projeto.</span>
             </div>
-            <div class="payment-grid">
-              <article class="payment-card"><small>01</small><strong>R$ 925</strong><span>Entrada e início do projeto.</span></article>
-              <article class="payment-card"><small>02</small><strong>R$ 462,50</strong><span>Pagamento na entrega do sistema.</span></article>
-              <article class="payment-card"><small>03</small><strong>R$ 462,50</strong><span>Pagamento 15 dias após a entrega.</span></article>
+            <div class="payment-mini">
+              <small>02</small>
+              <strong>R$ 462,50</strong>
+              <span>Pagamento na entrega do sistema.</span>
+            </div>
+            <div class="payment-mini">
+              <small>03</small>
+              <strong>R$ 462,50</strong>
+              <span>Pagamento 15 dias após a entrega.</span>
             </div>
           </div>
+        </article>
+
+        <article class="investment-option">
+          <span class="option-kicker">Licença de uso mensal</span>
+          <h3 class="option-title">Use sem comprar em definitivo</h3>
+          <p class="option-copy">Alternativa para quem prefere começar com menor investimento inicial e pagar uma mensalidade pelo uso contínuo do sistema.</p>
+
+          <div class="option-price">
+            <strong>R$ 189,00</strong>
+            <span>por mês</span>
+          </div>
+          <p class="option-note">Implantação inicial: <strong style="color:#fff">R$ 300,00</strong> • Permanência mínima recomendada: 12 meses.</p>
+
+          <ul class="option-list">
+            <li>Licença de uso do sistema enquanto a assinatura estiver ativa.</li>
+            <li>Hospedagem, manutenção técnica e pequenas correções incluídas.</li>
+            <li>Suporte recorrente e continuidade operacional sem compra definitiva.</li>
+            <li>Opção interessante para validar a solução antes de uma aquisição futura.</li>
+          </ul>
+
+          <div class="payment-inline" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+            <div class="payment-mini">
+              <small>Implantação</small>
+              <strong>R$ 300,00</strong>
+              <span>Configuração inicial e entrega pronta para uso.</span>
+            </div>
+            <div class="payment-mini">
+              <small>Mensalidade</small>
+              <strong>R$ 189,00</strong>
+              <span>Cobrança mensal para uso contínuo do sistema.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="conditions-card reveal" style="margin-top: 26px;">
+        <h3>Condições do projeto</h3>
+        <div class="conditions-grid">
+          <div class="condition-item"><span></span><p><strong>Prazo estimado:</strong> 20 a 30 dias após o pagamento da entrada e o recebimento das informações necessárias.</p></div>
+          <div class="condition-item"><span></span><p><strong>Validade da proposta:</strong> 15 dias. Novas funcionalidades fora deste escopo poderão ser orçadas separadamente.</p></div>
+          <div class="condition-item"><span></span><p><strong>Acesso:</strong> sistema responsivo em computador e celular, com usuários e dados da operação sob acesso da G3.</p></div>
+          <div class="condition-item"><span></span><p><strong>Serviços de terceiros:</strong> domínio, hospedagem, banco de dados ou APIs pagas não estão incluídos e somente serão contratados com autorização da cliente.</p></div>
         </div>
       </div>
+
     </section>
 
     <section class="conditions" id="condicoes">
